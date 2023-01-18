@@ -3,7 +3,7 @@ import { DataContext } from "../../utils/dataContext"
 export function PlayPause() {
   const { isPlaying, play, stop } = useContext(DataContext)
   return (
-    <div className='col-1'>
+    <div className='col-3'>
       {isPlaying ? (
         <button
           onClick={(e) => {

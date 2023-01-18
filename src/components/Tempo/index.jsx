@@ -1,7 +1,8 @@
-import { useContext } from "react"
+import { useContext, useEffect } from "react"
 import { DataContext } from "../../utils/dataContext"
 export default function Tempo() {
   const { tempo, changeTempo } = useContext(DataContext)
+  useEffect(() => {}, [tempo])
   return (
     <>
       <label htmlFor='tempo' className='col-1'>
@@ -11,7 +12,7 @@ export default function Tempo() {
         type='number'
         className='col-2'
         id='tempo'
-        defaultValue={tempo}
+        value={tempo}
         aria-describedby='tempoHelp'
         placeholder='Enter BPM'
         onChange={(e) => {

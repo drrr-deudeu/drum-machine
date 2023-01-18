@@ -1,5 +1,5 @@
 import { createContext, useState } from "react"
-import { defaultPreset } from "../../datas/tracks"
+import { presets } from "../../datas/tracks"
 import { Time, Transport } from "tone"
 
 /**
@@ -14,7 +14,8 @@ export const DataContext = createContext()
  */
 export const DataProvider = ({ children }) => {
   const [isPlaying, setIsPlaying] = useState(false)
-  const [tempo, setTempo] = useState(defaultPreset.bpm)
+  const [presetInd, setPresetInd] = useState(0)
+  const [tempo, setTempo] = useState(presets[presetInd].preset.bpm)
   const play = () => {
     switch (isPlaying) {
       case true:
@@ -42,13 +43,25 @@ export const DataProvider = ({ children }) => {
     setIsPlaying(false)
   }
 
+  const changePreset = (ind) => {
+    tracks.map((track) => {
+      if (track.loopId !== -1) Transport.clear(track.loopId)
+      track.loopId = -1
+      return track.loopId
+    })
+    setPresetInd(ind)
+    setTracks(presets[ind].preset.tracks)
+
+    changeTempo(presets[ind].preset.bpm)
+    loadDataTracks()
+  }
   const setStep = (indStep, indTrack) => {
     const t = tracks
     t[indTrack].steps[indStep] = !t[indTrack].steps[indStep]
     createLoop(t[indTrack])
     setTracks(t)
   }
-  const [tracks, setTracks] = useState(defaultPreset.tracks)
+  const [tracks, setTracks] = useState(presets[presetInd].preset.tracks)
 
   const getData = (t) => {
     const request = new XMLHttpRequest()
@@ -70,6 +83,7 @@ export const DataProvider = ({ children }) => {
   const loadDataTracks = () => {
     tracks.map((t, ind) => {
       getData(t)
+
       t.gain = t.ctx.createGain()
       t.gain.connect(t.ctx.destination)
       createLoop(t)
@@ -110,7 +124,7 @@ export const DataProvider = ({ children }) => {
     track.loopId = Transport.schedule(loop, "0")
   }
   Transport.loop = true
-  Transport.loopEnd = "1m"
+  Transport.loopEnd = "2m"
 
   loadDataTracks()
 
@@ -124,6 +138,8 @@ export const DataProvider = ({ children }) => {
         changeTempo,
         tracks,
         setStep,
+        changePreset,
+        presetInd,
       }}>
       {children}
     </DataContext.Provider>

@@ -2,7 +2,7 @@ import { useContext, useEffect, useState } from "react"
 import { DataContext } from "../../utils/dataContext"
 
 export default function Step({ step, indStep, indTrack, modulo }) {
-  const { setStep } = useContext(DataContext)
+  const { setStep, presetInd, tracks } = useContext(DataContext)
   const [localState, setLocalState] = useState(step)
   const classNameOn = "btn btn-secondary btn-sm modulo__" + modulo
   const classNameOff = "btn btn-primary btn-sm modulo__" + modulo
@@ -14,7 +14,9 @@ export default function Step({ step, indStep, indTrack, modulo }) {
     setLocalState((prev) => !prev)
   }
 
-  useEffect(() => {}, [localState])
+  useEffect(() => {
+    setLocalState(tracks[indTrack].steps[indStep])
+  }, [localState, presetInd, indStep, indTrack, tracks])
   return (
     <button
       type='button'

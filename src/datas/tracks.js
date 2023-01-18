@@ -1,6 +1,7 @@
 const myCtx = new AudioContext()
-export const defaultPreset = {
-  bpm: 100,
+export const gogo1 = {
+  bpm: 80,
+  name: "Gogo 1",
   tracks: [
     {
       id: 1,
@@ -12,6 +13,334 @@ export const defaultPreset = {
       modulo: 4,
       subDivision: "16n",
       steps: [
+        true,
+        true,
+        false,
+        false,
+
+        false,
+        false,
+        true,
+        true,
+
+        false,
+        false,
+        false,
+        false,
+
+        false,
+        false,
+        true,
+        false,
+
+        /* second bar */
+        true,
+        true,
+        false,
+        false,
+
+        false,
+        false,
+        true,
+        true,
+
+        false,
+        false,
+        false,
+        true,
+
+        false,
+        false,
+        false,
+        false,
+      ],
+    },
+    {
+      id: 2,
+      name: "Snare",
+      url: "/sounds/Hip-Hop-Snare-2.wav",
+      volume: 1,
+      ctx: myCtx,
+      loopId: -1,
+      modulo: 4,
+      subDivision: "16n",
+      steps: [
+        false,
+        false,
+        false,
+        false,
+
+        true,
+        false,
+        false,
+        false,
+
+        false,
+        false,
+        true,
+        false,
+
+        true,
+        false,
+        false,
+        false,
+
+        /* second bar */
+        false,
+        false,
+        false,
+        false,
+
+        true,
+        false,
+        false,
+        false,
+
+        false,
+        true,
+        false,
+        false,
+
+        false,
+        false,
+        false,
+        false,
+      ],
+    },
+    {
+      id: 3,
+      name: "CloseHiHat",
+      url: "/sounds/Closed-Hi-Hat-5.wav",
+      volume: 1,
+      ctx: myCtx,
+      loopId: -1,
+      modulo: 4,
+      subDivision: "16n",
+      steps: [
+        false,
+        false,
+        true,
+        false,
+
+        false,
+        false,
+        true,
+        false,
+
+        false,
+        false,
+        true,
+        false,
+
+        false,
+        false,
+        true,
+        false,
+
+        /* second bar */
+        false,
+        false,
+        true,
+        false,
+
+        false,
+        false,
+        true,
+        false,
+
+        false,
+        false,
+        true,
+        false,
+
+        false,
+        false,
+        true,
+        false,
+      ],
+    },
+    {
+      id: 4,
+      name: "Clap",
+      url: "/sounds/Clap-1.wav",
+      volume: 1,
+      ctx: myCtx,
+      loopId: -1,
+      modulo: 4,
+      subDivision: "16n",
+      steps: [
+        false,
+        false,
+        false,
+        false,
+
+        true,
+        false,
+        false,
+        false,
+
+        false,
+        false,
+        false,
+        false,
+
+        true,
+        false,
+        false,
+        false,
+
+        /* second bar */
+        false,
+        false,
+        false,
+        false,
+
+        true,
+        false,
+        false,
+        false,
+
+        false,
+        false,
+        false,
+        false,
+
+        true,
+        false,
+        false,
+        false,
+      ],
+    },
+    {
+      id: 5,
+      name: "Bell",
+      url: "/sounds/Cowbell-1.wav",
+      volume: 1,
+      ctx: myCtx,
+      loopId: -1,
+      modulo: 4,
+      subDivision: "16n",
+      steps: [
+        false,
+        false,
+        false,
+        false,
+
+        false,
+        false,
+        false,
+        false,
+
+        false,
+        false,
+        false,
+        false,
+
+        false,
+        false,
+        false,
+        false,
+
+        /* second bar */
+        false,
+        false,
+        false,
+        false,
+
+        true,
+        false,
+        false,
+        false,
+
+        false,
+        false,
+        false,
+        false,
+
+        true,
+        true,
+        true,
+        false,
+      ],
+    },
+    {
+      id: 6,
+      name: "Bell",
+      url: "/sounds/Cowbell-1.wav",
+      volume: 1,
+      ctx: myCtx,
+      loopId: -1,
+      modulo: 3,
+      subDivision: "8t",
+      steps: [
+        false,
+        false,
+        false,
+
+        false,
+        false,
+        false,
+
+        false,
+        false,
+        false,
+
+        false,
+        false,
+        false,
+
+        /* second bar */
+        false,
+        false,
+        false,
+
+        true,
+        false,
+        false,
+
+        false,
+        false,
+        false,
+
+        true,
+        true,
+        true,
+      ],
+    },
+  ],
+}
+
+export const defaultPreset = {
+  bpm: 100,
+  name: "default",
+  tracks: [
+    {
+      id: 1,
+      name: "Kick",
+      url: "/sounds/Dry-Kick.wav",
+      volume: 1,
+      ctx: myCtx,
+      loopId: -1,
+      modulo: 4,
+      subDivision: "16n",
+      steps: [
+        true,
+        false,
+        false,
+        false,
+        true,
+        false,
+        false,
+        false,
+        true,
+        false,
+        false,
+        false,
+        true,
+        false,
+        false,
+        false,
+
         true,
         false,
         false,
@@ -40,6 +369,25 @@ export const defaultPreset = {
       modulo: 4,
       subDivision: "16n",
       steps: [
+        false,
+        false,
+        true,
+        false,
+
+        false,
+        false,
+        false,
+        true,
+
+        false,
+        false,
+        true,
+        false,
+        false,
+        false,
+        false,
+        false,
+
         false,
         false,
         true,
@@ -89,6 +437,25 @@ export const defaultPreset = {
         false,
         true,
         false,
+        false,
+        false,
+        true,
+        false,
+
+        false,
+        false,
+        true,
+        false,
+
+        false,
+        false,
+        true,
+        false,
+
+        false,
+        false,
+        true,
+        false,
       ],
     },
     {
@@ -101,6 +468,22 @@ export const defaultPreset = {
       modulo: 4,
       subDivision: "16n",
       steps: [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        true,
+        true,
+        false,
+        false,
         false,
         false,
         false,
@@ -133,9 +516,26 @@ export const defaultPreset = {
         false,
         false,
 
+        false,
+        false,
+        false,
+
+        false,
+        false,
+        false,
+
+        false,
+        false,
+        false,
+
+        /* second bar */
+        false,
+        false,
+        false,
+
         true,
-        true,
-        true,
+        false,
+        false,
 
         false,
         false,
@@ -148,3 +548,8 @@ export const defaultPreset = {
     },
   ],
 }
+
+export const presets = [
+  { value: 0, label: defaultPreset.name, preset: defaultPreset },
+  { value: 1, label: gogo1.name, preset: gogo1 },
+]

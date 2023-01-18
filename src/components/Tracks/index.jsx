@@ -1,8 +1,10 @@
-import { useContext } from "react"
+import { useContext, useEffect } from "react"
 import { DataContext } from "../../utils/dataContext"
 import Track from "../Track"
 export default function Tracks() {
-  const { tracks } = useContext(DataContext)
+  const { tracks, presetInd } = useContext(DataContext)
+
+  useEffect(() => {}, [tracks, presetInd])
   return (
     <div className='row'>
       {tracks.map((t, ind) => {
