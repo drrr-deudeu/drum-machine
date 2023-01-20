@@ -9,13 +9,20 @@ import { Time, Transport } from "tone"
  */
 export const DataContext = createContext()
 /**
- * React component allowing to share the isMockData boolean value for all pages.
+ * React component allowing to share values for all pages.
  * @param {JSX.Element} param0
  */
 export const DataProvider = ({ children }) => {
   const [isPlaying, setIsPlaying] = useState(false)
   const [presetInd, setPresetInd] = useState(0)
   const [tempo, setTempo] = useState(presets[presetInd].preset.bpm)
+  const setVolume = (ind, volume) => {
+    tracks[ind].volume = volume
+    createLoop(tracks[ind])
+  }
+  const getVolume = (ind) => {
+    return tracks[ind].volume
+  }
   const play = () => {
     switch (isPlaying) {
       case true:
@@ -53,7 +60,6 @@ export const DataProvider = ({ children }) => {
     setTracks(presets[ind].preset.tracks)
 
     changeTempo(presets[ind].preset.bpm)
-    loadDataTracks()
   }
   const setStep = (indStep, indTrack) => {
     const t = tracks
@@ -83,9 +89,9 @@ export const DataProvider = ({ children }) => {
   const loadDataTracks = () => {
     tracks.map((t, ind) => {
       getData(t)
-
       t.gain = t.ctx.createGain()
       t.gain.connect(t.ctx.destination)
+      t.gain.gain.value = t.volume
       createLoop(t)
       return ind
     })
@@ -94,12 +100,13 @@ export const DataProvider = ({ children }) => {
     t.source = t.ctx.createBufferSource()
     t.source.buffer = t.buffer
     t.source.connect(t.gain)
+    t.gain.gain.value = t.volume
   }
 
   const trigger = (time, t) => {
-    if (t.volume === 0) {
-      return
-    }
+    // if (t.volume === 0) {
+    //   return
+    // }
     setup(t)
     t.source.start(time)
     t.source.stop(time + 0.1)
@@ -140,6 +147,8 @@ export const DataProvider = ({ children }) => {
         setStep,
         changePreset,
         presetInd,
+        setVolume,
+        getVolume,
       }}>
       {children}
     </DataContext.Provider>
