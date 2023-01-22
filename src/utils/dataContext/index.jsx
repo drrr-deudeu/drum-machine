@@ -109,7 +109,7 @@ export const DataProvider = ({ children }) => {
     // }
     setup(t)
     t.source.start(time)
-    t.source.stop(time + 0.1)
+    t.source.stop(time + 0.15)
   }
 
   const changeTempo = (bpm) => {
