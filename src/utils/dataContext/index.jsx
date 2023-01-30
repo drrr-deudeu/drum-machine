@@ -17,6 +17,8 @@ export const DataProvider = ({ children }) => {
   const [presetInd, setPresetInd] = useState(0)
   const [swing, setSwing] = useState(0)
   const [tempo, setTempo] = useState(presets[presetInd].preset.bpm)
+  const [position, setPosition] = useState(Transport.position)
+
   const setVolume = (ind, volume) => {
     tracks[ind].volume = volume
     createLoop(tracks[ind])
@@ -151,7 +153,6 @@ export const DataProvider = ({ children }) => {
             time +
               i * Time(track.subDivision).toSeconds() +
               (i % 2 && track.modulo === 4 ? deltaSwing() : 0),
-
             track
           )
         }
@@ -179,6 +180,8 @@ export const DataProvider = ({ children }) => {
         getVolume,
         swing,
         changeSwing,
+        position,
+        setPosition,
       }}>
       {children}
     </DataContext.Provider>

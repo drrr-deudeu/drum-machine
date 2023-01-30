@@ -1,4 +1,12 @@
 const myCtx = new AudioContext()
+// export const instruments = [
+//   { id: 0, name: "Kick", url: "/sounds/Dry-Kick.wav" },
+//   { id: 1, name: "Snare", url: "/sounds/Hip-Hop-Snare-2.wav" },
+//   { id: 2, name: "CloseHiHat", url: "/sounds/Closed-Hi-Hat-5.wav" },
+//   { id: 3, name: "Clap", url: "/sounds/Clap-1.wav" },
+//   { id: 5, name: "Bell", url: "/sounds/Cowbell-1.wav" },
+// ]
+
 export const gogo1 = {
   bpm: 80,
   name: "Gogo 1",
