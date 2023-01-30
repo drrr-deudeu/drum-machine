@@ -4,13 +4,13 @@ export default function Tempo() {
   const { tempo, changeTempo } = useContext(DataContext)
   useEffect(() => {}, [tempo])
   return (
-    <>
-      <label htmlFor='tempo' className='col-1'>
+    <div className='col-2'>
+      <label htmlFor='tempo' className='col'>
         BPM
       </label>
       <input
         type='number'
-        className='col-2'
+        className='tempo'
         id='tempo'
         value={tempo}
         aria-describedby='tempoHelp'
@@ -19,6 +19,6 @@ export default function Tempo() {
           e.preventDefault()
           changeTempo(e.target.value)
         }}></input>
-    </>
+    </div>
   )
 }

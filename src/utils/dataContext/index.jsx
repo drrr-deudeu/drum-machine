@@ -15,6 +15,7 @@ export const DataContext = createContext()
 export const DataProvider = ({ children }) => {
   const [isPlaying, setIsPlaying] = useState(false)
   const [presetInd, setPresetInd] = useState(0)
+  const [swing, setSwing] = useState(0)
   const [tempo, setTempo] = useState(presets[presetInd].preset.bpm)
   const setVolume = (ind, volume) => {
     tracks[ind].volume = volume
@@ -86,6 +87,13 @@ export const DataProvider = ({ children }) => {
     request.send()
   }
 
+  const changeSwing = (s) => {
+    setSwing(s)
+    tracks.map((t, ind) => {
+      createLoop(t)
+      return ind
+    })
+  }
   const loadDataTracks = () => {
     tracks.map((t, ind) => {
       getData(t)
@@ -121,10 +129,31 @@ export const DataProvider = ({ children }) => {
   const createLoop = (track) => {
     if (track.loopId !== -1) Transport.clear(track.loopId)
     Transport.bpm.value = tempo
+    const deltaSwing = () => {
+      switch (swing) {
+        case 1:
+          return Time("64t").toSeconds()
+        case 2:
+          return Time("64n").toSeconds()
+        case 3:
+          return Time("32t").toSeconds()
+        case 4:
+          return Time("32n").toSeconds()
+        case 0:
+        default:
+          return 0
+      }
+    }
     const loop = (time) => {
       track.steps.forEach((s, i) => {
         if (s) {
-          trigger(time + i * Time(track.subDivision).toSeconds(), track)
+          trigger(
+            time +
+              i * Time(track.subDivision).toSeconds() +
+              (i % 2 && track.modulo === 4 ? deltaSwing() : 0),
+
+            track
+          )
         }
       })
     }
@@ -132,7 +161,6 @@ export const DataProvider = ({ children }) => {
   }
   Transport.loop = true
   Transport.loopEnd = "2m"
-
   loadDataTracks()
 
   return (
@@ -149,6 +177,8 @@ export const DataProvider = ({ children }) => {
         presetInd,
         setVolume,
         getVolume,
+        swing,
+        changeSwing,
       }}>
       {children}
     </DataContext.Provider>

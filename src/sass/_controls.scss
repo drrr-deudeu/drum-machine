@@ -1,0 +1,36 @@
+.controls {
+    display: flex;
+    flex-direction: row;
+
+    gap: 10px;
+}
+
+.tempo {
+    max-width: 100px;
+}
+
+.playpause{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.swing {
+    max-width: 150px;
+}
+.preset_select {
+    max-width: 150px;
+}
+
+
+@media(max-width: 500px) {
+    .swing{
+        min-width: none;
+    }
+    .preset_select{
+        min-width: none;
+    }
+    .tempo {
+        max-width: 50px;
+    }
+}

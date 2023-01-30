@@ -13,12 +13,18 @@ export default function PresetSelection() {
 
   return (
     <div className='col-3'>
-      <Select
-        className='preset_select'
-        defaultValue={presetInd}
-        onChange={(e) => onChangePreset(e)}
-        options={presets}
-      />
+      <label htmlFor='preset' className='col'>
+        preset
+      </label>
+      <div className='col'>
+        <Select
+          id='preset'
+          className='preset_select'
+          defaultValue={presetInd}
+          onChange={(e) => onChangePreset(e)}
+          options={presets}
+        />
+      </div>
     </div>
   )
 }
