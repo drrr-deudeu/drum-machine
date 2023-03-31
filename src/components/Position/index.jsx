@@ -6,8 +6,8 @@ export function Position() {
 
   useEffect(() => {
     setInterval(() => {
-      setPosition(Transport.position)
-    }, 100)
+      setPosition(Transport.position.substr(0, 3))
+    }, 50)
   }, [position, setPosition])
   return <div className='col-3'>{position}</div>
 }

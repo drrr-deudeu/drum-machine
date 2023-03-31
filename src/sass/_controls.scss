@@ -33,4 +33,8 @@
     .tempo {
         max-width: 50px;
     }
+    .tempo:hover {
+        border-color: red;
+        border-width: 2px;
+    }
 }

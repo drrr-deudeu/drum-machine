@@ -17,7 +17,8 @@ export const DataProvider = ({ children }) => {
   const [presetInd, setPresetInd] = useState(0)
   const [swing, setSwing] = useState(0)
   const [tempo, setTempo] = useState(presets[presetInd].preset.bpm)
-  const [position, setPosition] = useState(Transport.position)
+  const [position, setPosition] = useState(Transport.position.substr(0, 3))
+  // const [position, setPosition] = useState(Transport.seconds)
 
   const setVolume = (ind, volume) => {
     tracks[ind].volume = volume
@@ -119,7 +120,7 @@ export const DataProvider = ({ children }) => {
     // }
     setup(t)
     t.source.start(time)
-    t.source.stop(time + 0.15)
+    t.source.stop(time + 0.5)
   }
 
   const changeTempo = (bpm) => {
